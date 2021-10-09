@@ -181,7 +181,7 @@ material-dashboard-react
         ├── UpgradeToPro
         │   └── UpgradeToPro.js
         └── UserProfile
-            └── UserProfile.js
+            └── Design.js
 ```
 
 ## Browser Support
