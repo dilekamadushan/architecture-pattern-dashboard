@@ -26,4 +26,4 @@ yarn-error.log*
 package-lock.json
 
 commit.sh
-/.idea/vcs.xml
+/.idea/*
