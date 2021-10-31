@@ -23,15 +23,18 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Admin from "layouts/Admin.js";
 import RTL from "layouts/RTL.js";
 
+import { AppContextProvider } from './Contexts/AppContext';
 import "assets/css/material-dashboard-react.css?v=1.10.0";
 
 ReactDOM.render(
+    <AppContextProvider>
   <BrowserRouter>
     <Switch>
       <Route path="/admin" component={Admin} />
       <Route path="/rtl" component={RTL} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Redirect from="/" to="/admin/design" />
     </Switch>
-  </BrowserRouter>,
+  </BrowserRouter>
+    </AppContextProvider>,
   document.getElementById("root")
 );

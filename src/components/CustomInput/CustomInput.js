@@ -25,6 +25,7 @@ export default function CustomInput(props) {
     error,
     success,
     rtlActive,
+      handleChange,
   } = props;
 
   const labelClasses = classNames({
@@ -62,6 +63,8 @@ export default function CustomInput(props) {
         </InputLabel>
       ) : null}
       <Input
+          onChange={handleChange}
+          onInput={handleChange}
         classes={{
           root: marginTop,
           disabled: classes.disabled,

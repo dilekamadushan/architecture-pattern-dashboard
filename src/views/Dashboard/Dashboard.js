@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // @material-ui/core
@@ -38,10 +38,12 @@ import {
 } from "variables/charts.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
+import {AppContext} from "../../Contexts/AppContext";
 
 const useStyles = makeStyles(styles);
 
 export default function Dashboard() {
+  const { analyzedResults } = useContext(AppContext);
   const classes = useStyles();
   return (
     <div>
@@ -52,7 +54,7 @@ export default function Dashboard() {
               <CardIcon color="warning">
                 <Icon>content_copy</Icon>
               </CardIcon>
-              <p className={classes.cardCategory}>Used Space</p>
+              <p className={classes.cardCategory}>Used Space{analyzedResults.name}</p>
               <h3 className={classes.cardTitle}>
                 49/50 <small>GB</small>
               </h3>
@@ -240,7 +242,49 @@ export default function Dashboard() {
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="warning">
-              <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
+              <h4 className={classes.cardTitleWhite}>Coordination Pattern</h4>
+              <p className={classes.cardCategoryWhite}>
+                Following service discovery patten is recommended
+              </p>
+            </CardHeader>
+            <CardBody>
+              <Table
+                tableHeaderColor="warning"
+                tableHead={["ID", "Pattern", "Reason"]}
+                tableData={[
+                  ["1", "Server Side Discovery Pattern", "$36,738"],
+                  ["1", "Api Gateway Pattern", ""]
+                ]}
+              />
+            </CardBody>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={6}>
+          <Card>
+            <CardHeader color="warning">
+              <h4 className={classes.cardTitleWhite}>Employees Stats 2</h4>
+              <p className={classes.cardCategoryWhite}>
+                New employees on 15th September, 2016
+              </p>
+            </CardHeader>
+            <CardBody>
+              <Table
+                  tableHeaderColor="warning"
+                  tableHead={["ID", "Name", "Salary", "Country"]}
+                  tableData={[
+                    ["1", "Dakota Rice", "$36,738", "Niger"],
+                    ["2", "Minerva Hooper", "$23,789", "Curaçao"],
+                    ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
+                    ["4", "Philip Chaney", "$38,735", "Korea, South"],
+                  ]}
+              />
+            </CardBody>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={6}>
+          <Card>
+            <CardHeader color="warning">
+              <h4 className={classes.cardTitleWhite}>Employees Stats 3</h4>
               <p className={classes.cardCategoryWhite}>
                 New employees on 15th September, 2016
               </p>
