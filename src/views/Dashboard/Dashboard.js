@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // @material-ui/core
@@ -31,6 +31,8 @@ import CardFooter from "components/Card/CardFooter.js";
 
 import { bugs, website, server } from "variables/general.js";
 
+import {analyzerLogic} from "../../utils/utils"
+
 import {
   dailySalesChart,
   emailsSubscriptionChart,
@@ -43,8 +45,14 @@ import {AppContext} from "../../Contexts/AppContext";
 const useStyles = makeStyles(styles);
 
 export default function Dashboard() {
-  const { analyzedResults } = useContext(AppContext);
+  const { analyzedResults, userInputs } = useContext(AppContext);
   const classes = useStyles();
+  const data = analyzerLogic(userInputs)
+  console.log(JSON.stringify(data));
+
+  useEffect(async() => {
+
+  }, []);
   return (
     <div>
       <GridContainer>
@@ -199,49 +207,8 @@ export default function Dashboard() {
       </GridContainer>
       <GridContainer>
         <GridItem xs={12} sm={12} md={6}>
-          <CustomTabs
-            title="Tasks:"
-            headerColor="primary"
-            tabs={[
-              {
-                tabName: "Bugs",
-                tabIcon: BugReport,
-                tabContent: (
-                  <Tasks
-                    checkedIndexes={[0, 3]}
-                    tasksIndexes={[0, 1, 2, 3]}
-                    tasks={bugs}
-                  />
-                ),
-              },
-              {
-                tabName: "Website",
-                tabIcon: Code,
-                tabContent: (
-                  <Tasks
-                    checkedIndexes={[0]}
-                    tasksIndexes={[0, 1]}
-                    tasks={website}
-                  />
-                ),
-              },
-              {
-                tabName: "Server",
-                tabIcon: Cloud,
-                tabContent: (
-                  <Tasks
-                    checkedIndexes={[1]}
-                    tasksIndexes={[0, 1, 2]}
-                    tasks={server}
-                  />
-                ),
-              },
-            ]}
-          />
-        </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
           <Card>
-            <CardHeader color="warning">
+            <CardHeader color="info">
               <h4 className={classes.cardTitleWhite}>Coordination Pattern</h4>
               <p className={classes.cardCategoryWhite}>
                 Following service discovery patten is recommended
@@ -249,12 +216,9 @@ export default function Dashboard() {
             </CardHeader>
             <CardBody>
               <Table
-                tableHeaderColor="warning"
+                tableHeaderColor="info"
                 tableHead={["ID", "Pattern", "Reason"]}
-                tableData={[
-                  ["1", "Server Side Discovery Pattern", "$36,738"],
-                  ["1", "Api Gateway Pattern", ""]
-                ]}
+                tableData={data[0]}
               />
             </CardBody>
           </Card>
@@ -262,7 +226,7 @@ export default function Dashboard() {
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="warning">
-              <h4 className={classes.cardTitleWhite}>Employees Stats 2</h4>
+              <h4 className={classes.cardTitleWhite}>State Management Patterns</h4>
               <p className={classes.cardCategoryWhite}>
                 New employees on 15th September, 2016
               </p>
@@ -270,12 +234,10 @@ export default function Dashboard() {
             <CardBody>
               <Table
                   tableHeaderColor="warning"
-                  tableHead={["ID", "Name", "Salary", "Country"]}
+                  tableHead={["ID", "Pattern", "Reason"]}
                   tableData={[
-                    ["1", "Dakota Rice", "$36,738", "Niger"],
-                    ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                    ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                    ["4", "Philip Chaney", "$38,735", "Korea, South"],
+                    ["1", "Event Driven State Management", "High scalability, contracts can be abstracted into events"],
+                    ["2", "Event Sourcing", "Single source of truth(Recommended for banking systems)"],
                   ]}
               />
             </CardBody>
@@ -283,22 +245,37 @@ export default function Dashboard() {
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>
           <Card>
-            <CardHeader color="warning">
-              <h4 className={classes.cardTitleWhite}>Employees Stats 3</h4>
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Deployment Patterns</h4>
               <p className={classes.cardCategoryWhite}>
-                New employees on 15th September, 2016
+                Following deployment patterns are recommended
               </p>
             </CardHeader>
             <CardBody>
               <Table
-                tableHeaderColor="warning"
-                tableHead={["ID", "Name", "Salary", "Country"]}
+                tableHeaderColor="primary"
+                tableHead={["ID", "Pattern", "Reason"]}
                 tableData={[
-                  ["1", "Dakota Rice", "$36,738", "Niger"],
-                  ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                  ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                  ["4", "Philip Chaney", "$38,735", "Korea, South"],
+                  ["1", "Single instance per host(container) pattern", "High Scalability"],
+                  ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]
                 ]}
+              />
+            </CardBody>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={6}>
+          <Card>
+            <CardHeader color="primary">
+              <h4 className={classes.cardTitleWhite}>Test Patterns</h4>
+              <p className={classes.cardCategoryWhite}>
+                Following deployment patterns are recommended
+              </p>
+            </CardHeader>
+            <CardBody>
+              <Table
+                  tableHeaderColor="primary"
+                  tableHead={["ID", "Pattern", "Reason"]}
+                  tableData={data[0]}
               />
             </CardBody>
           </Card>

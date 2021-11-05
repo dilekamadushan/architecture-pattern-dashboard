@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
 // @material-ui/core components
@@ -16,13 +16,16 @@ import Close from "@material-ui/icons/Close";
 import Check from "@material-ui/icons/Check";
 // core components
 import styles from "assets/jss/material-dashboard-react/components/tasksStyle.js";
+import {AppContext} from "../../Contexts/AppContext";
 
 const useStyles = makeStyles(styles);
 
 export default function Tasks(props) {
   const classes = useStyles();
+  const {userInputs, setUserInputs } = useContext(AppContext);
   const [checked, setChecked] = React.useState([...props.checkedIndexes]);
   const handleToggle = (value) => {
+    console.log("clicked")
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
     if (currentIndex === -1) {
@@ -31,6 +34,7 @@ export default function Tasks(props) {
       newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
+    setUserInputs({...userInputs,frontends:newChecked})
   };
   const { tasksIndexes, tasks, rtlActive } = props;
   const tableCellClasses = classnames(classes.tableCell, {

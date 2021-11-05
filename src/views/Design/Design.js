@@ -53,7 +53,7 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function Design() {
-  const { setAnalyzedResults } = useContext(AppContext);
+  const { setAnalyzedResults, userInputs, setUserInputs } = useContext(AppContext);
   const classes = useStyles();
   const history = useHistory();
 
@@ -64,6 +64,8 @@ export default function Design() {
     noOfServices: '',
     noOfUsers: '',
     scalability: '',
+    developmentComplexity: '',
+    teamExperience: '',
     company:'',
     name: 'hai',
     labelWidth: 0,
@@ -78,20 +80,24 @@ export default function Design() {
   }, []);
 
   const handleChange = event => {
-    console.log(JSON.stringify({...information, [event.target.name]:event.target.value}))
+
     setInformation({...information, [event.target.name]:event.target.value})
+    setUserInputs({...userInputs, [event.target.name]:event.target.value})
+    console.log(JSON.stringify(userInputs))
   };
 
   const submit = () => {
     alert('clicked')
-    analyzerService.createEngagement(information).then(data=> {
+    history.push(`/admin/dashboard`)
+
+  /*  analyzerService.createEngagement(information).then(data=> {
       alert(JSON.stringify(data))
       setAnalyzedResults({name:"Hello World"})
       history.push(`/admin/dashboard`)
     }).catch(()=>{
       setAnalyzedResults({name:"Hello World"})
       history.push(`/admin/dashboard`)
-    });
+    });*/
   }
 
   return (
@@ -177,7 +183,7 @@ export default function Design() {
                         onChange={handleChange}
                         inputProps={{
                           name: 'scalability',
-                          id: 'noOfUsersId',
+                          id: 'scalability',
                         }}
                     >
                       <MenuItem selected={true} value={0}>Low</MenuItem>
@@ -194,7 +200,7 @@ export default function Design() {
                         onChange={handleChange}
                         inputProps={{
                           name: 'cost',
-                          id: 'noOfUsersId',
+                          id: 'cost',
                         }}
                     >
                       <MenuItem selected={true} value={0}>Low</MenuItem>
@@ -207,11 +213,11 @@ export default function Design() {
                   <FormControl className={classes.formControl}>
                     <InputLabel style={{ color: "#3e16c9", minWidth:'100px' }}>Development Team Experience</InputLabel>
                     <Select
-                        value={information.cost}
+                        value={information.teamExperience}
                         onChange={handleChange}
                         inputProps={{
-                          name: 'cost',
-                          id: 'noOfUsersId',
+                          name: 'teamExperience',
+                          id: 'teamExperience',
                         }}
                     >
                       <MenuItem selected={true} value={0}>Low</MenuItem>
@@ -222,15 +228,15 @@ export default function Design() {
                 </GridItem>
               </GridContainer>
               <GridContainer style={{ paddingTop:'50px' }}>
-                <GridItem className={classes.segmentControl} xs={12} sm={12} md={4}>
+                <GridItem className={classes.segmentControl} xs={12} sm={12} md={6}>
                   <FormControl className={classes.formControl}>
                     <InputLabel style={{ color: "#3e16c9", minWidth:'100px' }}>Development Complexity</InputLabel>
                     <Select
-                        value={information.cost}
+                        value={information.developmentComplexity}
                         onChange={handleChange}
                         inputProps={{
-                          name: 'cost',
-                          id: 'noOfUsersId',
+                          name: 'developmentComplexity',
+                          id: 'developmentComplexity',
                         }}
                     >
                       <MenuItem selected={true} value={0}>Low</MenuItem>
@@ -239,63 +245,29 @@ export default function Design() {
                     </Select>
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Country"
-                    id="country"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={4}>
-                  <CustomInput
-                    labelText="Postal Code"
-                    id="postal-code"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>
-             {/* <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: "#AAAAAA" }}>About me</InputLabel>
-                  <CustomInput
-                    labelText="Lamborghini Mercy I'm in that two seat Lambo."
-                    id="about-me"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 5,
-                    }}
-                  />
-                </GridItem>
-              </GridContainer>*/}
-
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
+                <GridItem xs={12} sm={12} md={6}>
                   <FormControl className={classes.formControl}>
-                  <InputLabel style={{ color: "#AAAAAA" }}>Select Size</InputLabel>
-                  <Select
-                      value={information.size}
-                      onChange={handleChange}
-                      inputProps={{
-                        name: 'size',
-                        id: 'age-simple',
-                      }}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
+                    <InputLabel style={{ color: "#AAAAAA" }}>Select Size</InputLabel>
+                    <Select
+                        value={information.size}
+                        onChange={handleChange}
+                        inputProps={{
+                          name: 'size',
+                          id: 'age-simple',
+                        }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem>
+                    </Select>
                   </FormControl>
                 </GridItem>
+              </GridContainer>
+
+              <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomTabs
                       title="Tasks:"
@@ -307,7 +279,7 @@ export default function Design() {
                           tabContent: (
                               <Tasks
                                   checkedIndexes={[0]}
-                                  tasksIndexes={[0, 1]}
+                                  tasksIndexes={[0, 1, 2]}
                                   tasks={clientApplications}
                               />
                           ),
