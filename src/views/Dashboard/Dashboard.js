@@ -29,6 +29,8 @@ import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
+import {readUserInputXml} from "../../xml/xmlReader";
+
 import { bugs, website, server } from "variables/general.js";
 
 import {analyzerLogic} from "../../utils/utils"
@@ -45,10 +47,11 @@ import {AppContext} from "../../Contexts/AppContext";
 const useStyles = makeStyles(styles);
 
 export default function Dashboard() {
-  const { analyzedResults, userInputs } = useContext(AppContext);
+  const { analyzedResults, userInputs, userInputXml } = useContext(AppContext);
   const classes = useStyles();
   const data = analyzerLogic(userInputs)
-  console.log(JSON.stringify(data));
+  console.log("Xml input from user", JSON.stringify(userInputXml));
+  readUserInputXml(userInputXml);
 
   useEffect(async() => {
 
@@ -235,10 +238,11 @@ export default function Dashboard() {
               <Table
                   tableHeaderColor="warning"
                   tableHead={["ID", "Pattern", "Reason"]}
-                  tableData={[
+                  tableData={data[1]}
+                 /* tableData={[
                     ["1", "Event Driven State Management", "High scalability, contracts can be abstracted into events"],
                     ["2", "Event Sourcing", "Single source of truth(Recommended for banking systems)"],
-                  ]}
+                  ]}*/
               />
             </CardBody>
           </Card>
@@ -255,27 +259,11 @@ export default function Dashboard() {
               <Table
                 tableHeaderColor="primary"
                 tableHead={["ID", "Pattern", "Reason"]}
-                tableData={[
+                tableData={data[2]}
+               /* tableData={[
                   ["1", "Single instance per host(container) pattern", "High Scalability"],
                   ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]
-                ]}
-              />
-            </CardBody>
-          </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
-          <Card>
-            <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Test Patterns</h4>
-              <p className={classes.cardCategoryWhite}>
-                Following deployment patterns are recommended
-              </p>
-            </CardHeader>
-            <CardBody>
-              <Table
-                  tableHeaderColor="primary"
-                  tableHead={["ID", "Pattern", "Reason"]}
-                  tableData={data[0]}
+                ]}*/
               />
             </CardBody>
           </Card>

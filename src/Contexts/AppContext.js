@@ -5,6 +5,7 @@ export const AppContext = createContext();
 export function AppContextProvider({ children }) {
   const [analyzedResults, setAnalyzedResults] = useState({});
     const [userInputs, setUserInputs] = useState({});
+    const [userInputXml, setUserInputXml] = useState('');
 
   return (
     <AppContext.Provider
@@ -12,7 +13,9 @@ export function AppContextProvider({ children }) {
           analyzedResults,
           setAnalyzedResults,
           userInputs,
-          setUserInputs
+          setUserInputs,
+          userInputXml,
+          setUserInputXml
       }}
     >
       {children}

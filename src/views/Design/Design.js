@@ -53,7 +53,7 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 export default function Design() {
-  const { setAnalyzedResults, userInputs, setUserInputs } = useContext(AppContext);
+  const { userInputs, setUserInputs, setUserInputXml } = useContext(AppContext);
   const classes = useStyles();
   const history = useHistory();
 
@@ -84,6 +84,26 @@ export default function Design() {
     setInformation({...information, [event.target.name]:event.target.value})
     setUserInputs({...userInputs, [event.target.name]:event.target.value})
     console.log(JSON.stringify(userInputs))
+  };
+
+  const handleImageUpload = event => {
+    const file = event.target.files[0]
+
+    const reader = new FileReader()
+
+    const textFile = /text.*/;
+    let data = '';
+
+    if (file.type.match(textFile)) {
+      reader.onload = function (event) {
+        data = event.target.result;
+        console.log("Data read :", data);
+        setUserInputXml(data)
+      }
+    } else {
+      console.error('It doesn\'t seem to be a text file!');
+    }
+    reader.readAsText(file);
   };
 
   const submit = () => {
@@ -290,7 +310,13 @@ export default function Design() {
               </GridContainer>
             </CardBody>
             <CardFooter>
-              <Button onClick={submit}  color="primary">Analyze</Button>
+              <GridItem xs={12} sm={12} md={6}>
+                <Button onClick={submit}  color="primary">Analyze</Button>
+              </GridItem>
+              <GridItem xs={12} sm={12} md={6}>
+                <input type="file" onChange={handleImageUpload}/>
+              </GridItem>
+
             </CardFooter>
           </Card>
         </GridItem>
