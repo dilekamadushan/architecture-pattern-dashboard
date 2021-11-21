@@ -34,7 +34,7 @@ export default function Tasks(props) {
       newChecked.splice(currentIndex, 1);
     }
     setChecked(newChecked);
-    setUserInputs({...userInputs,frontends:newChecked})
+    setUserInputs({...userInputs,frontEnds:newChecked})
   };
   const { tasksIndexes, tasks, rtlActive } = props;
   const tableCellClasses = classnames(classes.tableCell, {

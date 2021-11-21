@@ -69,6 +69,7 @@ export default function Design() {
     company:'',
     name: 'hai',
     labelWidth: 0,
+    databaseScalability: '',
   })
 
   useEffect(async() => {
@@ -265,23 +266,23 @@ export default function Design() {
                     </Select>
                   </FormControl>
                 </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem className={classes.segmentControl} xs={12} sm={12} md={6}>
                   <FormControl className={classes.formControl}>
-                    <InputLabel style={{ color: "#AAAAAA" }}>Select Size</InputLabel>
+                    <InputLabel style={{ color: "#3e16c9" }}>Database Scalability</InputLabel>
                     <Select
-                        value={information.size}
+                        value={information.databaseScalability}
                         onChange={handleChange}
                         inputProps={{
-                          name: 'size',
-                          id: 'age-simple',
+                          name: 'databaseScalability',
+                          id: 'databaseScalability',
                         }}
                     >
                       <MenuItem value="">
                         <em>None</em>
                       </MenuItem>
-                      <MenuItem value={10}>Ten</MenuItem>
-                      <MenuItem value={20}>Twenty</MenuItem>
-                      <MenuItem value={30}>Thirty</MenuItem>
+                      <MenuItem value={0}>Low</MenuItem>
+                      <MenuItem value={1}>Medium</MenuItem>
+                      <MenuItem value={2}>High</MenuItem>
                     </Select>
                   </FormControl>
                 </GridItem>

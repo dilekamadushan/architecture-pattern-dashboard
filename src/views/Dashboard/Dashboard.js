@@ -49,9 +49,9 @@ const useStyles = makeStyles(styles);
 export default function Dashboard() {
   const { analyzedResults, userInputs, userInputXml } = useContext(AppContext);
   const classes = useStyles();
-  const data = analyzerLogic(userInputs)
   console.log("Xml input from user", JSON.stringify(userInputXml));
-  readUserInputXml(userInputXml);
+  const transformedInput = readUserInputXml(userInputXml);
+  const data = analyzerLogic(transformedInput||userInputs)
 
   useEffect(async() => {
 
@@ -264,6 +264,48 @@ export default function Dashboard() {
                   ["1", "Single instance per host(container) pattern", "High Scalability"],
                   ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]
                 ]}*/
+              />
+            </CardBody>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={6}>
+          <Card>
+            <CardHeader color="info">
+              <h4 className={classes.cardTitleWhite}>Data Storage Patterns</h4>
+              <p className={classes.cardCategoryWhite}>
+                Following technologies are recommended
+              </p>
+            </CardHeader>
+            <CardBody>
+              <Table
+                  tableHeaderColor="info"
+                  tableHead={["ID", "Pattern", "Reason"]}
+                  tableData={data[3]}
+                  /* tableData={[
+                     ["1", "Single instance per host(container) pattern", "High Scalability"],
+                     ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]
+                   ]}*/
+              />
+            </CardBody>
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={6}>
+          <Card>
+            <CardHeader color="info">
+              <h4 className={classes.cardTitleWhite}>Technologies</h4>
+              <p className={classes.cardCategoryWhite}>
+                Following technologies are recommended
+              </p>
+            </CardHeader>
+            <CardBody>
+              <Table
+                  tableHeaderColor="info"
+                  tableHead={["ID", "Technology", "Reason"]}
+                  tableData={data[4]}
+                  /* tableData={[
+                     ["1", "Single instance per host(container) pattern", "High Scalability"],
+                     ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]
+                   ]}*/
               />
             </CardBody>
           </Card>

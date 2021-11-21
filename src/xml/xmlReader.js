@@ -37,6 +37,7 @@ const userInputXMLTwo = '<?xml version=\'1.0\' encoding=\'utf-8\'?>\n' +
 export const readUserInputXml = (userInputXML)=>{
     const userInputJson={}
     console.log("Start of the userinput xml function", userInputXML)
+    if(userInputXML==='') return '';
     const xml = new XMLParser().parseFromString(userInputXML);
 
     const domain = xml.getElementsByTagName("Domain");
@@ -65,8 +66,23 @@ export const readUserInputXml = (userInputXML)=>{
     frontEnds.forEach(frontEnd => {
         userInputJson.frontEnds.push(frontEnd['value']);
     })
+    const events = xml.getElementsByTagName("Event");
+    userInputJson.events = [];
+    events.forEach(event => {
+        userInputJson.events.push(event['value']);
+    })
+
+    const transactional = xml.getElementsByTagName("Transactional");
+    userInputJson.transactional = transactional[0] && transactional[0]['value'];
+
+    const dataScalability = xml.getElementsByTagName("DataScalability");
+    userInputJson.dataScalability = dataScalability[0] && dataScalability[0]['value'];
+
+    const dataAcid = xml.getElementsByTagName("DataAcid");
+    userInputJson.dataAcid = dataAcid[0] && dataAcid[0]['value'];
 
     console.log("Final JSON", JSON.stringify(userInputJson));
+    return userInputJson;
 
 }
 export const readXML = ()=>{
