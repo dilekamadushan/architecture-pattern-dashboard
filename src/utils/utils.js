@@ -127,17 +127,12 @@ const dataStorageRecommendations = (userInput) => {
     }
     switch (userInput.dataAcid) {
         case "1":
-            recommendations.push(["3", "SQL databases(MySQl, Postgress)", "Ensures ACID properties"]);
+            recommendations.push(["2", "SQL databases(MySQl, Postgress)", "Ensures ACID properties"]);
             break;
         default:
 
             console.log("not NoSQL");
     }
-
-    if (userInput.events && userInput.events.length > 0) {
-        recommendations.push(["2", "Kafka, Kinesis", "Event driven communication"]);
-    }
-
     return recommendations;
 }
 
