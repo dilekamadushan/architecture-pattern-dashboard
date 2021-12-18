@@ -36,7 +36,7 @@ const userInputXMLTwo = '<?xml version=\'1.0\' encoding=\'utf-8\'?>\n' +
 
 export const readUserInputXml = (userInputXML)=>{
     const userInputJson={}
-    console.log("Start of the userinput xml function", userInputXML)
+    console.log("Start of the user input xml function", userInputXML)
     if(userInputXML==='') return '';
     const xml = new XMLParser().parseFromString(userInputXML);
 
@@ -84,25 +84,4 @@ export const readUserInputXml = (userInputXML)=>{
     console.log("Final JSON", JSON.stringify(userInputJson));
     return userInputJson;
 
-}
-export const readXML = ()=>{
-    console.log("Start of the xml function")
-    const xml = new XMLParser().parseFromString(xmlText);
-    console.log(xml);
-    console.log("Printing the name books")
-    const books = xml.getElementsByTagName('Books');
-    console.log(books);
-    books.forEach(book => {
-        console.log("Printing each book", book)
-        const children = book.getElementsByTagName('Book');
-        console.log("Printing book", children);
-        children.forEach(child =>{
-            const names = child.getElementsByTagName('Name')
-            console.log("Printing names", names)
-        })
-
-
-    })
-    console.log("Printing name tags")
-    console.log(xml.getElementsByTagName('Name'));
 }

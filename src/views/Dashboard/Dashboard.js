@@ -239,10 +239,6 @@ export default function Dashboard() {
                   tableHeaderColor="warning"
                   tableHead={["ID", "Pattern", "Reason"]}
                   tableData={data[1]}
-                 /* tableData={[
-                    ["1", "Event Driven State Management", "High scalability, contracts can be abstracted into events"],
-                    ["2", "Event Sourcing", "Single source of truth(Recommended for banking systems)"],
-                  ]}*/
               />
             </CardBody>
           </Card>
@@ -260,10 +256,6 @@ export default function Dashboard() {
                 tableHeaderColor="primary"
                 tableHead={["ID", "Pattern", "Reason"]}
                 tableData={data[2]}
-               /* tableData={[
-                  ["1", "Single instance per host(container) pattern", "High Scalability"],
-                  ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]
-                ]}*/
               />
             </CardBody>
           </Card>
@@ -281,10 +273,6 @@ export default function Dashboard() {
                   tableHeaderColor="info"
                   tableHead={["ID", "Pattern", "Reason"]}
                   tableData={data[3]}
-                  /* tableData={[
-                     ["1", "Single instance per host(container) pattern", "High Scalability"],
-                     ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]
-                   ]}*/
               />
             </CardBody>
           </Card>
@@ -302,10 +290,6 @@ export default function Dashboard() {
                   tableHeaderColor="info"
                   tableHead={["ID", "Technology", "Reason"]}
                   tableData={data[4]}
-                  /* tableData={[
-                     ["1", "Single instance per host(container) pattern", "High Scalability"],
-                     ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]
-                   ]}*/
               />
             </CardBody>
           </Card>
