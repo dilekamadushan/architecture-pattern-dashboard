@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<UserInput>
+    <Domain>0</Domain>
+    <NumberOfServices>10</NumberOfServices>
+    <NumberOfUsers>0</NumberOfUsers>
+    <Scalability>1</Scalability>
+    <Cost>0</Cost>
+    <TeamExperience>0</TeamExperience>
+    <DevelopmentComplexity>0</DevelopmentComplexity>
+    <FrontEndApplications>
+        <FrontEnd>Mobile</FrontEnd>
+        <FrontEnd>Web</FrontEnd>
+    </FrontEndApplications>
+    <Events>
+    </Events>
+<Data>
+<Transactional>0</Transactional>
+<DataScalability></DataScalability>
+<DataAcid>1</DataAcid>
+</Data>
+</UserInput>
