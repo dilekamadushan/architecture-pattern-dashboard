@@ -72,6 +72,10 @@ export const readUserInputXml = (userInputXML)=>{
         userInputJson.events.push(event['value']);
     })
 
+    const commands = xml.getElementsByTagName("Command");
+    const query = xml.getElementsByTagName("Query");
+    userInputJson.commandQuery = commands && query;
+
     const transactional = xml.getElementsByTagName("Transactional");
     userInputJson.transactional = transactional[0] && transactional[0]['value'];
 

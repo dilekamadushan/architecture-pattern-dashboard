@@ -156,7 +156,7 @@ export default function Design() {
                 </GridItem>
                 <GridItem xs={12} sm={12} md={4}>
                   <FormControl className={classes.formControl}>
-                    <InputLabel style={{ color: "#3e16c9", minWidth:'100px' }}>Number of Services</InputLabel>
+                    <InputLabel style={{ color: "#3e16c9", minWidth:'100px' }}>Number of Micro-Services(initial plan)</InputLabel>
                     <Select
                         value={information.noOfServices}
                         onChange={handleChange}
@@ -215,7 +215,7 @@ export default function Design() {
                 </GridItem>
                 <GridItem className={classes.segmentControl} xs={12} sm={12} md={4}>
                   <FormControl className={classes.formControl}>
-                    <InputLabel style={{ color: "#3e16c9", minWidth:'100px' }}>Cost</InputLabel>
+                    <InputLabel style={{ color: "#3e16c9", minWidth:'100px' }}>Cost Budget</InputLabel>
                     <Select
                         value={information.cost}
                         onChange={handleChange}

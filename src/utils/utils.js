@@ -59,6 +59,10 @@ const stateManagementRecommendations = (userInput) => {
             console.log("Not transactional");
     }
 
+    if(userInput.commandQuery){
+        recommendations.push([recommendations.length+1, "Event Sourcing", "CQRS Pattern could be used for high scalability and eventual consistency"]);
+    }
+
     return recommendations;
 }
 
