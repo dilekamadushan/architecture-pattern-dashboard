@@ -12,6 +12,10 @@
         <FrontEnd>Web</FrontEnd>
     </FrontEndApplications>
     <Events>
+        <Command>create order</Command>
+        <BoundaryContext>
+
+        </BoundaryContext>
     </Events>
 <Data>
 <Transactional>0</Transactional>

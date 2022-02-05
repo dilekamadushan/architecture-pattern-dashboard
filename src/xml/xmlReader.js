@@ -73,8 +73,9 @@ export const readUserInputXml = (userInputXML)=>{
     })
 
     const commands = xml.getElementsByTagName("Command");
+    userInputJson.commands = commands.length>0;
     const query = xml.getElementsByTagName("Query");
-    userInputJson.commandQuery = commands && query;
+    userInputJson.query = query.length>0;
 
     const transactional = xml.getElementsByTagName("Transactional");
     userInputJson.transactional = transactional[0] && transactional[0]['value'];

@@ -36,7 +36,7 @@ const stateManagementRecommendations = (userInput) => {
 
     switch (userInput.domain) {
         case "0" || "2" || "3":
-            recommendations.push([recommendations.length+1, "Event Driven State Management", "High scalability, contracts can be abstracted into events"]);
+            recommendations.push([(recommendations.length+1).toString(), "Event Driven State Management", "High scalability, contracts can be abstracted into events"]);
             break;
         default:
             console.log("Domain is not known into state management");
@@ -44,23 +44,23 @@ const stateManagementRecommendations = (userInput) => {
     switch (userInput.teamExperience) {
         case "0":
             console.log("team experience is low");
-            recommendations.push([recommendations.length+1, "Message oriented state patterns", "This should be used by an organization beginning the microservices journey, but it may not suit your needs as your approach becomes more mature"]);
+            recommendations.push([(recommendations.length+1).toString(), "Message oriented state patterns", "This should be used by an organization beginning the microservices journey, but it may not suit your needs as your approach becomes more mature"]);
             break;
         default:
             console.log("team experience is high");
-            recommendations.push([recommendations.length+1, "Event Sourcing", "Single source of truth(Recommended for banking systems)"]);
+            recommendations.push([(recommendations.length+1).toString(), "Event Sourcing", "Single source of truth(Recommended for banking systems)"]);
     }
     switch (userInput.transactional) {
         case "1":
             console.log("Transactional");
-            recommendations.push([recommendations.length+1, "SAGA Event pattern is preferred", "Since transactions spanning among multiple services could be addressed by SAGA pattern"]);
+            recommendations.push([(recommendations.length+1).toString(), "SAGA Event pattern is preferred", "Since transactions spanning among multiple services could be addressed by SAGA pattern"]);
             break;
         default:
             console.log("Not transactional");
     }
 
-    if(userInput.commandQuery){
-        recommendations.push([recommendations.length+1, "Event Sourcing", "CQRS Pattern could be used for high scalability and eventual consistency"]);
+    if(userInput.commands){
+        recommendations.push([(recommendations.length+1).toString(), "Event Sourcing", "CQRS Pattern could be used for high scalability and eventual consistency"]);
     }
 
     return recommendations;
@@ -88,7 +88,7 @@ const technologyRecommendations = (userInput) => {
 
     switch (userInput.cost) {
         case "0":
-            recommendations.push([recommendations.length+1, "AWS Lambda, Serverless", "Low cost, High Scalability, Low warm up time"]);
+            recommendations.push([(recommendations.length+1).toString(), "AWS Lambda, Serverless", "Low cost, High Scalability, Low warm up time"]);
             console.log("low cost");
             break;
         default:
@@ -97,7 +97,7 @@ const technologyRecommendations = (userInput) => {
 
     switch (userInput.dataScalability) {
         case "1":
-            recommendations.push([recommendations.length+1, "No SQL databases(MongoDB, Cassandra)", "High vertical scalability"]);
+            recommendations.push([(recommendations.length+1).toString(), "No SQL databases(MongoDB, Cassandra)", "High vertical scalability"]);
             break;
         default:
 
@@ -105,7 +105,7 @@ const technologyRecommendations = (userInput) => {
     }
     switch (userInput.dataAcid) {
         case "1":
-            recommendations.push([recommendations.length+1, "SQL databases(MySQl, Postgress)", "Ensures ACID properties"]);
+            recommendations.push([(recommendations.length+1).toString(), "SQL databases(MySQl, Postgress)", "Ensures ACID properties"]);
             break;
         default:
 
@@ -113,7 +113,7 @@ const technologyRecommendations = (userInput) => {
     }
 
     if (userInput.events && userInput.events.length > 0) {
-        recommendations.push([recommendations.length+1, "Kafka, Kinesis", "Event driven communication"]);
+        recommendations.push([(recommendations.length+1).toString(), "Kafka, Kinesis", "Event driven communication"]);
     }
 
     return recommendations;
@@ -124,14 +124,14 @@ const dataStorageRecommendations = (userInput) => {
 
     switch (userInput.dataScalability) {
         case "1":
-            recommendations.push([recommendations.length+1, "Database per service pattern", "The success of this pattern hinges on effectively defining the bounded contexts in your application"]);
+            recommendations.push([(recommendations.length+1).toString(), "Database per service pattern", "The success of this pattern hinges on effectively defining the bounded contexts in your application"]);
             break;
         default:
-            recommendations.push([recommendations.length+1, "Database cluster pattern", "All the microservices can use the same database, each microserive sees it as its own datastore "]);
+            recommendations.push([(recommendations.length+1).toString(), "Database cluster pattern", "All the microservices can use the same database, each microserive sees it as its own datastore "]);
     }
     switch (userInput.dataAcid) {
         case "1":
-            recommendations.push([recommendations.length+1, "SQL databases(MySQl, Postgress)", "Ensures ACID properties"]);
+            recommendations.push([(recommendations.length+1).toString(), "SQL databases(MySQl, Postgress)", "Ensures ACID properties"]);
             break;
         default:
 
