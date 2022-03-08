@@ -108,7 +108,6 @@ export default function Design() {
   };
 
   const submit = () => {
-    alert('clicked')
     history.push(`/admin/dashboard`)
 
   /*  analyzerService.createEngagement(information).then(data=> {
@@ -144,8 +143,6 @@ export default function Design() {
                           id: 'domain',
                         }}
                     >
-                      {/*<MenuItem selected={true} value="0">hhhhhhhhhhhhhhh
-                      </MenuItem>*/}
                       <MenuItem selected={true} value={0}>Restaurant/Food/Orders</MenuItem>
                       <MenuItem value={1}>Health Care</MenuItem>
                       <MenuItem value={2}>E-Commerce</MenuItem>

@@ -13,9 +13,7 @@
     </FrontEndApplications>
     <Events>
         <Command>create order</Command>
-        <BoundaryContext>
-
-        </BoundaryContext>
+        <BoundaryContext>Customer purchase</BoundaryContext>
     </Events>
 <Data>
 <Transactional>0</Transactional>
@@ -23,3 +21,5 @@
 <DataAcid>1</DataAcid>
 </Data>
 </UserInput>
+
+

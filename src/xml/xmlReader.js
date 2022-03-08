@@ -77,6 +77,9 @@ export const readUserInputXml = (userInputXML)=>{
     const query = xml.getElementsByTagName("Query");
     userInputJson.query = query.length>0;
 
+    const boundaryContexts = xml.getElementsByTagName("BoundaryContext");
+    userInputJson.boundaryContexts = boundaryContexts.length > 0;
+
     const transactional = xml.getElementsByTagName("Transactional");
     userInputJson.transactional = transactional[0] && transactional[0]['value'];
 

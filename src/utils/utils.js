@@ -50,9 +50,9 @@ const stateManagementRecommendations = (userInput) => {
             console.log("team experience is high");
             recommendations.push([(recommendations.length+1).toString(), "Event Sourcing", "Single source of truth(Recommended for banking systems)"]);
     }
-    switch (userInput.transactional) {
+    switch (userInput.boundaryContexts) {
         case "1":
-            console.log("Transactional");
+            console.log("boundaryContexts");
             recommendations.push([(recommendations.length+1).toString(), "SAGA Event pattern is preferred", "Since transactions spanning among multiple services could be addressed by SAGA pattern"]);
             break;
         default:
