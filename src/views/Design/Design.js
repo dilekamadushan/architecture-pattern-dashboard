@@ -70,6 +70,7 @@ export default function Design() {
     name: 'hai',
     labelWidth: 0,
     databaseScalability: '',
+    databaseAcid: '',
   })
 
   useEffect(async() => {
@@ -109,15 +110,6 @@ export default function Design() {
 
   const submit = () => {
     history.push(`/admin/dashboard`)
-
-  /*  analyzerService.createEngagement(information).then(data=> {
-      alert(JSON.stringify(data))
-      setAnalyzedResults({name:"Hello World"})
-      history.push(`/admin/dashboard`)
-    }).catch(()=>{
-      setAnalyzedResults({name:"Hello World"})
-      history.push(`/admin/dashboard`)
-    });*/
   }
 
   return (
@@ -162,8 +154,6 @@ export default function Design() {
                           id: 'noOfServicesId',
                         }}
                     >
-                      {/*<MenuItem selected={true} value="0">hhhhhhhhhhhhhhh
-                      </MenuItem>*/}
                       <MenuItem selected={true} value={0}>0-5</MenuItem>
                       <MenuItem value={1}>5-20</MenuItem>
                       <MenuItem value={2}>20-50</MenuItem>
@@ -246,7 +236,7 @@ export default function Design() {
                 </GridItem>
               </GridContainer>
               <GridContainer style={{ paddingTop:'50px' }}>
-                <GridItem className={classes.segmentControl} xs={12} sm={12} md={6}>
+                <GridItem className={classes.segmentControl} xs={12} sm={12} md={4}>
                   <FormControl className={classes.formControl}>
                     <InputLabel style={{ color: "#3e16c9", minWidth:'100px' }}>Development Complexity</InputLabel>
                     <Select
@@ -263,7 +253,7 @@ export default function Design() {
                     </Select>
                   </FormControl>
                 </GridItem>
-                <GridItem className={classes.segmentControl} xs={12} sm={12} md={6}>
+                <GridItem className={classes.segmentControl} xs={12} sm={12} md={4}>
                   <FormControl className={classes.formControl}>
                     <InputLabel style={{ color: "#3e16c9" }}>Database Scalability</InputLabel>
                     <Select
@@ -283,16 +273,35 @@ export default function Design() {
                     </Select>
                   </FormControl>
                 </GridItem>
+                <GridItem className={classes.segmentControl} xs={12} sm={12} md={4}>
+                  <FormControl className={classes.formControl}>
+                    <InputLabel style={{ color: "#3e16c9" }}>Database ACID</InputLabel>
+                    <Select
+                      value={information.databaseAcid}
+                      onChange={handleChange}
+                      inputProps={{
+                        name: 'databaseAcid',
+                        id: 'databaseAcid',
+                      }}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={0}>No</MenuItem>
+                      <MenuItem value={1}>Yes</MenuItem>
+                    </Select>
+                  </FormControl>
+                </GridItem>
               </GridContainer>
 
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomTabs
-                      title="Tasks:"
+                      title=""
                       headerColor="primary"
                       tabs={[
                         {
-                          tabName: "Bugs",
+                          tabName: "Types of Clients",
                           tabIcon: BugReport,
                           tabContent: (
                               <Tasks

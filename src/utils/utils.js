@@ -14,10 +14,7 @@ const coordinationRecommendations = (userInput) => {
     const coordination = [];
     coordination.push(["1", "Server Side Discovery Pattern", "Uniform clients/Industrially recommended pattern"])
 
-    if (userInput.frontEnds === undefined) {
-        console.log("front ends undefined");
-        coordination.push(["2", "Api Gateway Pattern", "Ease of extension"])
-    } else if (userInput.frontEnds.length > 0) {
+    if (userInput.frontEnds && userInput.frontEnds.length > 0) {
         console.log("bff pattern");
         coordination.push(["2", "Backend for Frontend (BFF) Pattern", "Multiple formats of client need different levels of data"])
     } else {
@@ -67,50 +64,13 @@ const deploymentRecommendations = (userInput) => {
     const recommendations = [];
 
     switch (userInput.cost) {
-        case 0:
+        case 0 || 1:
             recommendations.push(["1", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]);
             console.log("low cost");
             break;
         default:
-            recommendations.push(["1", "Single instance per host(container) pattern", "High Scalability"],
-                ["2", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]);
+            recommendations.push(["1", "Single instance per host(container) pattern", "High Scalability"]);
             console.log("medium cost");
-    }
-
-    return recommendations;
-}
-
-const technologyRecommendations = (userInput) => {
-    const recommendations = [];
-
-    switch (userInput.cost) {
-        case 0:
-            recommendations.push([(recommendations.length+1).toString(), "AWS Lambda, Serverless", "Low cost, High Scalability, Low warm up time"]);
-            console.log("low cost");
-            break;
-        default:
-            console.log("not lambda");
-    }
-
-    switch (userInput.dataScalability) {
-        case 1:
-            recommendations.push([(recommendations.length+1).toString(), "No SQL databases(MongoDB, Cassandra)", "High vertical scalability"]);
-            break;
-        default:
-
-            console.log("not NoSQL");
-    }
-    switch (userInput.dataAcid) {
-        case 1:
-            recommendations.push([(recommendations.length+1).toString(), "SQL databases(MySQl, Postgress)", "Ensures ACID properties"]);
-            break;
-        default:
-
-            console.log("not NoSQL");
-    }
-
-    if (userInput.events && userInput.events.length > 0) {
-        recommendations.push([(recommendations.length+1).toString(), "Kafka, Kinesis", "Event driven communication"]);
     }
 
     return recommendations;
@@ -136,6 +96,43 @@ const dataStorageRecommendations = (userInput) => {
     }
     return recommendations;
 }
+
+const technologyRecommendations = (userInput) => {
+    const recommendations = [];
+
+    switch (userInput.cost) {
+        case 0:
+            recommendations.push([(recommendations.length+1).toString(), "AWS Lambda, Serverless", "Low cost, High Scalability, Low warm up time"]);
+            console.log("low cost");
+            break;
+        default:
+            console.log("not lambda");
+    }
+
+    switch (userInput.databaseScalability) {
+        case 1:
+            recommendations.push([(recommendations.length+1).toString(), "No SQL databases(MongoDB, Cassandra)", "High vertical scalability"]);
+            break;
+        default:
+
+            console.log("not NoSQL");
+    }
+    switch (userInput.databaseAcid) {
+        case 1:
+            recommendations.push([(recommendations.length+1).toString(), "SQL databases(MySQl, Postgress)", "Ensures ACID properties"]);
+            break;
+        default:
+
+            console.log("not NoSQL");
+    }
+
+    if (userInput.events && userInput.events.length > 0) {
+        recommendations.push([(recommendations.length+1).toString(), "Kafka, Kinesis", "Event driven communication"]);
+    }
+
+    return recommendations;
+}
+
 
 module.exports = {
     analyzerLogic
