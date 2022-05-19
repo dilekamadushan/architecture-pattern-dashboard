@@ -63,14 +63,13 @@ const stateManagementRecommendations = (userInput) => {
 const deploymentRecommendations = (userInput) => {
     const recommendations = [];
 
-    switch (userInput.cost) {
-        case 0 || 1:
+    if (userInput?.cost ===0 || userInput?.cost ===1) {
             recommendations.push(["1", "Serverless deployment", "Low cost, High Scalability, Low warm up time"]);
             console.log("low cost");
-            break;
-        default:
-            recommendations.push(["1", "Single instance per host(container) pattern", "High Scalability"]);
-            console.log("medium cost");
+    }
+    else {
+        recommendations.push(["1", "Single instance per host(container) pattern", "High Scalability"]);
+        console.log("medium cost");
     }
 
     return recommendations;
